@@ -5,13 +5,9 @@
 * Return: 0
 */
 
-int main()
+int main(void)
 {
-	int testNum;
-
-	testNum = 485;
-
-	positive_or_negative(testNum);
+	positive_or_negative(0);
 
 	return 0;
 }
