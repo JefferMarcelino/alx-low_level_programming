@@ -1,27 +1,26 @@
 #include "main.h"
 
 /**
- * print_diagonal - function that drwas a diagonal line
- *                  on the terminal
+ * print_triangule - function that prints a triangule
  *
- * @n: number of time the character \ should be printed
+ * @size: size of the triangule
  *
  * Return: void
  */
 
-void print_diagonal(int n)
+void print_triangule(int size)
 {
-	int i, j, k, square = 1;
+	int i, j, k, ch = 1;
 
-	if (n > 0)
+	if (size > 0)
 	{
-		for (i = 0; i < n; i++)
+		for (i = 0; i < size; i++)
 		{
-			for (j = 0; j < n - square; j++)
+			for (j = 0; j < size - ch; j++)
 				_putchar(32);
-			for (k = 0; k < square; k++)
+			for (k = 0; k < ch; k++)
 				_putchar(35);
-			square++;
+			ch++;
 			_putchar(10);
 		}
 	} else
