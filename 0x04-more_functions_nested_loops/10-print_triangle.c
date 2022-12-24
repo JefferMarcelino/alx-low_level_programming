@@ -20,7 +20,6 @@ void print_triangule(int size)
 				_putchar(32);
 			for (j = 0; j <= i; j++)
 				_putchar(35);
-			ch++;
 			_putchar(10);
 		}
 	} else
