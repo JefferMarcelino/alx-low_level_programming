@@ -17,7 +17,7 @@ void print_rev(char *s)
 	while (s[size] != 0)
 		size++;
 
-	while (size > 0)
+	while (size >= 0)
 	{
 		_putchar(s[size]);
 		size--;
