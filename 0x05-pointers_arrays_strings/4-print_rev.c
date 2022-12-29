@@ -20,6 +20,6 @@ void print_rev(char *s)
 	while (size > 0)
 	{
 		_putchar(s[size]);
-		size--
+		size--;
 	}
 }
