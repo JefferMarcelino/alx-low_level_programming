@@ -10,7 +10,7 @@
 
 void print_rev(char *s)
 {
-	int size;
+ 	int size;
 
 	size = 0;
 
@@ -19,4 +19,5 @@ void print_rev(char *s)
 
 	for (size = size; size >= 0; --size)
 		_putchar(s[size]);
+	_putchar(10);
 }
