@@ -10,7 +10,7 @@
 
 void _puts(char *str)
 {
-	int n;
+	int n = 0;
 
 	while (str[n] != 0)
 	{
