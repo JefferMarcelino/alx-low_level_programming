@@ -11,7 +11,7 @@
 
 char *_strpbrk(char *s, char *accept)
 {
-	unsigned int i;
+	int i;
 
 	for (; *s != 0; s++)
 	{
@@ -21,9 +21,6 @@ char *_strpbrk(char *s, char *accept)
 				return (s);
 		}
 	}
-
-	if (*s == *accept)
-		return (s);
 
 	return (0);
 }
