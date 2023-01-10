@@ -8,7 +8,7 @@
  * @argc: the number of arguments
  * @argv: the argument's array
  *
- * Return: 0 (success) or -1 (failed)
+ * Return: 0 (success) or 1 (failed)
  */
 
 int main(int argc, char *argv[])
@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 		} else
 		{
 			printf("Error\n");
-			return (-1);
+			return (1);
 		}
 	}
 
