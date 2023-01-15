@@ -29,11 +29,11 @@ int _strlen(char *str)
 
 char *_strdup(char *str)
 {
-	if (!str)
-		return (0);
-
 	int i, size = _strlen(str);
 	char *newStr = malloc(sizeof(*str) * size);
+
+	if (!str)
+		return (0);
 
 	for (i = 0; i < size; ++i)
 		newStr[i] = str[i];
