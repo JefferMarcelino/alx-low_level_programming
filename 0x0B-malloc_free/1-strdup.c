@@ -13,7 +13,6 @@ int _strlen(char *str)
 {
 	if (*str == 0)
 		return (0);
-
 	str++;
 	return (1 + _strlen(str));
 }
@@ -36,9 +35,9 @@ char *_strdup(char *str)
 		return (0);
 
 	size = _strlen(str);
-	newStr = malloc(sizeof(*str) * size);
+	newStr = malloc((sizeof(*str) * size) + 1);
 
-	for (i = 0; i < size; ++i)
+	for (i = 0; i < (size + 1); i++)
 		newStr[i] = str[i];
 
 	return (newStr);
