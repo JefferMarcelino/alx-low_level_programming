@@ -28,29 +28,33 @@ int _strlen(char *str)
 
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *newStr;
-	int i, totalSize, num = n;
+	char *ptr;
+	int num, len, i, j;
 
+	num = n;
+
+	if (s1 == 0)
+		s1 = "";
+	if (s2 == 0)
+		s2 = "";
 	if (num < 0)
 		return (0);
-
 	if (num >= _strlen(s2))
-		totalSize = _strlen(s1) + _strlen(s2);
-	else
-		totalSize = _strlen(s1) + num;
+		num = _strlen(s2);
 
-	newStr = malloc(sizeof(*newStr) * (totalSize + 1));
+	len = _strlen(s1) + num + 1;
 
-	if (newStr == 0)
+	ptr = malloc(sizeof(*ptr) * len);
+	if (ptr == 0)
 		return (0);
 
-	for (i = 0; i < _strlen(s1); i++)
-		newStr[i] = s1[i];
+	for (i = 0; s1[i] != 0; i++)
+		ptr[i] = s1[i];
 
-	for (i = 0; i < num && s2[i] != 0; i++)
-		newStr[_strlen(s1) + i] = s2[i];
+	for (j = 0; j < num; j++)
+		ptr[i + j] = s2[j];
 
-	newStr[totalSize] = 0;
+	ptr[i + j] = 0;
 
-	return (newStr);
+	return (ptr);
 }
