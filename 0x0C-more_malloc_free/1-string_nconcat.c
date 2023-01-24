@@ -8,7 +8,7 @@
  * Return: the string length
  */
 
-unsigned int _strlen(char *str)
+int _strlen(char *str)
 {
 	if (str == 0 || *str == 0)
 		return (0);
@@ -29,12 +29,15 @@ unsigned int _strlen(char *str)
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *newStr;
-	unsigned int i, totalSize;
+	int i, totalSize, num = n;
 
-	if (n >= _strlen(s2))
+	if (num < 0)
+		return (0);
+
+	if (num >= _strlen(s2))
 		totalSize = _strlen(s1) + _strlen(s2);
 	else
-		totalSize = _strlen(s1) + n;
+		totalSize = _strlen(s1) + num;
 
 	newStr = malloc(sizeof(*newStr) * (totalSize + 1));
 
@@ -44,7 +47,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	for (i = 0; i < _strlen(s1); i++)
 		newStr[i] = s1[i];
 
-	for (i = 0; i < n && s2[i] != 0; i++)
+	for (i = 0; i < num && s2[i] != 0; i++)
 		newStr[_strlen(s1) + i] = s2[i];
 
 	newStr[totalSize] = 0;
