@@ -29,10 +29,7 @@ unsigned int _strlen(char *str)
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *newStr;
-	int i, totalSize;
-
-	if (n < 0)
-		return (0);
+	unsigned int i, totalSize;
 
 	if (n >= _strlen(s2))
 		totalSize = _strlen(s1) + _strlen(s2);
