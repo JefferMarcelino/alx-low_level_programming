@@ -10,7 +10,7 @@
 
 unsigned int _strlen(char *str)
 {
-	if (*str == 0)
+	if (str == 0 || *str == 0)
 		return (0);
 	str++;
 	return (1 + _strlen(str));
