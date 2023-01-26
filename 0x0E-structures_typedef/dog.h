@@ -1,6 +1,6 @@
-#ifndef _DOG_
+#ifndef _DOG_T_
 
-#define _DOG_
+#define _DOG_T_
 #include "main.h"
 
 /**
