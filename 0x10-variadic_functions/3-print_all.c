@@ -1,21 +1,69 @@
 #include <stdio.h>
 #include <stdarg.h>
+#include "variadic_functions.h"
 
 /**
- * _strlen - function that counts the chars from a string
+ * print_char - print a char
  *
- * @str: the string
+ * @arg: a list of argument pointing
+ *      to the character to be printed
  *
- * Return: the length of the string
+ * Return: nothing
  */
 
-int _strlen(const char * const str)
+void print_char(va_list arg)
 {
-	int i = 0;
+	printf("%c", va_arg(arg, int));
+}
 
-	while (str[i] != 0)
-		i++;
-	return (i);
+/**
+ * print_int - print an integer
+ *
+ * @arg: a list of argument pointing
+ *      to the character to be printed
+ *
+ * Return: nothing
+ */
+
+void print_int(va_list arg)
+{
+	printf("%d", va_arg(arg, int));
+}
+
+/**
+ * print_float - print a float
+ *
+ * @arg: a list of argument pointing
+ *      to the character to be printed
+ *
+ * Return: nothing
+ */
+
+
+void print_float(va_list arg)
+{
+	printf("%f", va_arg(arg, double));
+}
+
+/**
+ * print_string - print a string
+ *
+ * @arg: a list of argument pointing
+ *      to the character to be printed
+ *
+ * Return: nothing
+ */
+
+void print_string(va_list arg)
+{
+	char *str = va_arg(arg, char *);
+
+	if (str == 0)
+	{
+		printf("(nil)");
+		return;
+	}
+	printf("%s", str);
 }
 
 /**
@@ -28,43 +76,33 @@ int _strlen(const char * const str)
 
 void print_all(const char * const format, ...)
 {
-	int i = 0, length = _strlen(format);
+	int i, j;
 	va_list args;
-	char *str;
+	func_to_print funcs_print[] = {
+		{"c", print_char},
+		{"i", print_int},
+		{"f", print_float},
+		{"s", print_string}
+	};
+	char *separator = "";
 
 	va_start(args, format);
-
-	while (i < length)
+	while (format && format[i])
 	{
-		switch (format[i])
+		j = 0;
+
+		while (j < 4 && (*(funcs_print[j].symbol) != format[i]))
+			j++;
+
+		if (j < 4)
 		{
-		case 'c':
-			printf("%c", va_arg(args, int));
-			break;
-		case 'i':
-			printf("%d", va_arg(args, int));
-			break;
-		case 'f':
-			printf("%f", va_arg(args, double));
-			break;
-		case 's':
-			str = va_arg(args, char *);
-			if (!str)
-				str = "(nil)";
-			printf("%s", str);
-			break;
-		default:
-			break;
+			printf("%s", separator);
+			funcs_print[j].func(args);
+			separator = ", ";
 		}
-
-		if ((format[i] == 'c' || format[i] == 'i'
-		    || format[i] == 'f' || format[i] == 's')
-		    && (i != (length - 1)))
-			printf(", ");
-
 		i++;
 	}
+	printf("\n");
 
 	va_end(args);
-	printf("\n");
 }
