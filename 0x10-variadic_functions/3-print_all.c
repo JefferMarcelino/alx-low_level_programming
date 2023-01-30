@@ -5,7 +5,6 @@
  * _strlen - function that counts the chars from a string
  *
  * @str: the string
- * @i: the index to be analyzed
  *
  * Return: the length of the string
  */
@@ -58,13 +57,10 @@ void print_all(const char * const format, ...)
 			break;
 		}
 
-		if ((format[i] == 'c'
-		    || format[i] == 'i'
-		    || format[i] == 'f'
-		    || format[i] == 's') && (i != (length - 1)))
-		{
+		if ((format[i] == 'c' || format[i] == 'i'
+		    || format[i] == 'f' || format[i] == 's')
+		    && (i != (length - 1)))
 			printf(", ");
-		}
 
 		i++;
 	}
