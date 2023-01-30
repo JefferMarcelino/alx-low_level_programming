@@ -10,11 +10,13 @@
  * Return: the length of the string
  */
 
-int _strlen(const char * const str, int i)
+int _strlen(const char * const str)
 {
-	if (str[i] == 0)
-		return (0);
-	return (1 + _strlen(str, i + 1));
+	int i = 0;
+
+	while (str[i] != 0)
+		i++;
+	return (i);
 }
 
 /**
@@ -27,7 +29,7 @@ int _strlen(const char * const str, int i)
 
 void print_all(const char * const format, ...)
 {
-	int i = 0, length = _strlen(format, 0);
+	int i = 0, length = _strlen(format);
 	va_list args;
 	char *str;
 
@@ -48,7 +50,9 @@ void print_all(const char * const format, ...)
 			break;
 		case 's':
 			str = va_arg(args, char *);
-			printf("%s", str ? str : "(nil)");
+			if (!str)
+				str = "(nil)";
+			printf("%s", str);
 			break;
 		default:
 			break;
