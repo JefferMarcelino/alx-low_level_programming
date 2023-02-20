@@ -1,6 +1,14 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+/**
+ * _strlen - function that returns the length of a string
+ *
+ * @str: the string
+ *
+ * Return: the length
+ */
+
 int _strlen(char *str)
 {
 	if (str == 0 || *str == 0)
@@ -8,6 +16,15 @@ int _strlen(char *str)
 	str++;
 	return (1 + _strlen(str));
 }
+
+/**
+ * create_file - a function that creates a file
+ *
+ * @filename: the filename's name
+ * @text_content: the filename's content
+ *
+ * Return: 1 on success, -1 on failure
+ */
 
 int create_file(const char *filename, char *text_content)
 {
